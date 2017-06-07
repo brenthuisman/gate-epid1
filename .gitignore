@@ -1,0 +1,10 @@
+# First, ignore everything
+*
+# Now, whitelist dirs
+!data/
+!mac/
+!data/*
+!mac/*
+# files
+!.gitignore
+
