@@ -1,0 +1,57 @@
+############# kill after support
+#/gate/actor/addActor KillActor       ahnuld
+#/gate/actor/ahnuld/save             ahnuld.txt
+#/gate/actor/ahnuld/attachTo         support
+#/gate/actor/ahnuld/addFilter                         transmissionFilter
+#/gate/actor/ahnuld/transmissionFilter/setTransmission false
+############# END OF TEST
+
+## EPID PhaseSpace
+
+/gate/actor/addActor PhaseSpaceActor FlightRecorder3
+/gate/actor/FlightRecorder3/save                     output/phosphorscreen.root
+/gate/actor/FlightRecorder3/attachTo                 phosphorscreen
+/gate/actor/FlightRecorder3/useVolumeFrame           true
+/gate/actor/FlightRecorder3/storeOutgoingParticles   false
+/gate/actor/FlightRecorder3/enableTransmission       true
+/gate/actor/FlightRecorder3/enablePrimary            true
+
+## EPID (TLE) DOSE, all DOSE
+
+/gate/actor/addActor DoseActor      epiddoseall
+/gate/actor/epiddoseall/save              output/epiddose-all.mhd
+/gate/actor/epiddoseall/attachTo          phosphorscreen
+#/gate/actor/epiddoseall/stepHitType       middle
+/gate/actor/epiddoseall/setResolution     {RESOLUTION} {RESOLUTION} 1
+/gate/actor/epiddoseall/enableDose            true
+/gate/actor/epiddoseall/enableUncertaintyDose true
+/gate/actor/epiddoseall/enableEdep            true
+/gate/actor/epiddoseall/enableUncertaintyEdep true
+/gate/actor/epiddoseall/enableNumberOfHits true
+
+/gate/actor/addActor DoseActor      epiddosephot
+/gate/actor/epiddosephot/save              output/epiddose-gamma.mhd
+/gate/actor/epiddosephot/attachTo          phosphorscreen
+#/gate/actor/epiddosephot/stepHitType       middle
+/gate/actor/epiddosephot/setResolution     {RESOLUTION} {RESOLUTION} 1
+/gate/actor/epiddosephot/enableDose            true
+/gate/actor/epiddosephot/enableUncertaintyDose true
+/gate/actor/epiddosephot/enableEdep            true
+/gate/actor/epiddosephot/enableUncertaintyEdep true
+/gate/actor/epiddosephot/enableNumberOfHits true
+/gate/actor/epiddosephot/addFilter                         particleFilter
+/gate/actor/epiddosephot/particleFilter/addParticle        gamma
+
+/gate/actor/addActor DoseActor      epiddoseelectron
+/gate/actor/epiddoseelectron/save              output/epiddose-electron.mhd
+/gate/actor/epiddoseelectron/attachTo          phosphorscreen
+#/gate/actor/epiddoseelectron/stepHitType       middle
+/gate/actor/epiddoseelectron/setResolution     {RESOLUTION} {RESOLUTION} 1
+/gate/actor/epiddoseelectron/enableDose            true
+/gate/actor/epiddoseelectron/enableUncertaintyDose true
+/gate/actor/epiddoseelectron/enableEdep            true
+/gate/actor/epiddoseelectron/enableUncertaintyEdep true
+/gate/actor/epiddoseelectron/enableNumberOfHits true
+/gate/actor/epiddoseelectron/addFilter                         particleFilter
+/gate/actor/epiddoseelectron/particleFilter/addParticle        e-
+/gate/actor/epiddoseelectron/particleFilter/addParticle        e+

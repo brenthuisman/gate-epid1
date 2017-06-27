@@ -11,12 +11,9 @@
 # VERBOSE and VISUALISATION
 #=====================================================
 
+
 #/control/alias NPRIM 1000000000
-/control/alias NPRIM 500
-
-
-#/control/alias NPRIM 500000000
-
+/control/alias NPRIM 500000000
 #/control/alias NPRIM 100000000
 #/control/alias RANDSEED 5523864823339546
 /control/alias RANDSEED auto
@@ -40,8 +37,8 @@
 /gate/world/vis/setVisible 0
 
 ## Target : choose CT or waterbox
-#/control/execute mac/target-CT.mac
-/control/execute mac/target-slabs.mac
+/control/execute mac/target-CT.mac
+#/control/execute mac/target-slabs.mac
 
 ### A simple linac with backup X,Y and MLC
 /gate/geometry/setMaterialDatabase data/PreciseMaterials.db
@@ -52,7 +49,7 @@
 
 # Epid
 /control/execute mac/epidpanel.mac
-/control/execute mac/epidkill.mac
+/control/execute mac/epidkillnontrans.mac
 
 #=====================================================
 # PHYSICS

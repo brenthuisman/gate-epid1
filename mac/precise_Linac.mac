@@ -1,3 +1,13 @@
+#/gate/world/daughters/name positioningaid
+#/gate/world/daughters/insert box
+#/gate/positioningaid/setMaterial Air
+#/gate/positioningaid/geometry/setXLength 4 cm  
+#/gate/positioningaid/geometry/setYLength 12 cm
+#/gate/positioningaid/geometry/setZLength 1.1 m
+#/gate/positioningaid/placement/setTranslation 0 -0.003 0.55 m # MLC bank has y=-3mm offset, X is aligned well.
+
+
+
 # -----------------------------------------------------
 # MACRO TEMPLATE FOR MAIN LINAC BOX
 # -----------------------------------------------------
@@ -15,7 +25,8 @@
 /gate/mylinac/vis/setColor white
 /gate/mylinac/vis/setVisible 0
 /gate/mylinac/moves/insert genericMove
-/gate/mylinac/genericMove/setPlacementsFilename data/precise_Linac.placements
+#/gate/mylinac/genericMove/setPlacementsFilename data/precise_Linac.placements
+/gate/mylinac/genericMove/setPlacementsFilename data/precise_Linac.brent.placements
 #/gate/mylinac/genericMove/useRelativeTranslation 1
 
 # -----------------------------------------------------
@@ -40,6 +51,7 @@
 /gate/linacPhSPlane/vis/setColor red
 /gate/linacPhSPlane/vis/setVisible 1
 /gate/linacPhSPlane/placement/setTranslation 0.0 0.0 -297 mm
+#/gate/linacPhSPlane/placement/setTranslation 0.0 0.0 3 mm
 
 # -----------------------------------------------------
 # MLC box
@@ -53,15 +65,16 @@
 #/gate/mylinac_MLC/geometry/setYLength 800.0 mm  
 #/gate/mylinac_MLC/geometry/setZLength 76.0 mm  
 /gate/mylinac_MLC/placement/setTranslation 0.0 0.0 -335.5 mm
+#/gate/mylinac_MLC/placement/setTranslation 0.0 0.0 -35.5 mm
 /gate/mylinac_MLC/vis/setVisible 0
 # All leafs
 /control/execute mac/precise_MultiLeafsCollimator.mac
 
 # -----------------------------------------------------
 # Beam Limiting Device Y
-/control/execute mac/precise_Y_BeamLimitingDevice.mac
+#/control/execute mac/precise_Y_BeamLimitingDevice.mac
 
 # -----------------------------------------------------
 # Beam Limiting Device X
-/control/execute mac/precise_X_BeamLimitingDevice.mac
+#/control/execute mac/precise_X_BeamLimitingDevice.mac
 

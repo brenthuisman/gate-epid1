@@ -1,0 +1,8 @@
+###### List of placement (translation and rotation) according to time
+###### Column 1      is Time in s (second)
+###### Columns 2,3,4 are translation in mm
+Time s 
+Translation mm
+ 
+0 	0 20.0 0
+250.716 	0 20.0 0

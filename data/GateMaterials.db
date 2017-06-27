@@ -452,3 +452,26 @@ Epoxy:  d=1.0 g/cm3; n=3; state=Solid
 Carbide: d=15.8 g/cm3; n=2 ; state=Solid
         +el: name=Tungsten ; n=1
         +el: name=Carbon ; n=1
+
+#GOS: d=5.64 g/cm3; n=3 ; state=Solid
+#	+el: name=Gadolinium ; n=2
+#	+el: name=Oxygen; n=2
+#	+el: name=Sulfur; n=1
+
+GOS: d=5.64 g/cm3; n=1 ; state=Solid
+        +mat: name=G4_GADOLINIUM_OXYSULFIDE ; n=1
+
+cellulose_acetate: d=1.29 g/cm3 ; n=3
+        +el: name=Hydrogen   ; f=0.062162
+        +el: name=Carbon     ; f=0.444462
+        +el: name=Oxygen     ; f=0.493376
+        
+cellulose_acetate_butyrate: d=1.29 g/cm3 ; n=3
+        +el: name=Hydrogen   ; f=0.067125
+        +el: name=Carbon     ; f=0.545403
+        +el: name=Oxygen     ; f=0.387472
+        
+# PET == boPET == Mylar
+PET_TiO: d=1.29 g/cm3 ; n=2
+        +mat: name=G4_MYLAR   ; f=0.925
+        +mat: name=G4_TITANIUM_DIOXIDE     ; f=0.075

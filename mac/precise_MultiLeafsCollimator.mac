@@ -97,7 +97,7 @@
 # -----------------------------------------------------
 # Repeater and motion
 /gate/mylinac_MLC_Leaf1_Left/moves/insert genericRepeaterMove
-/gate/mylinac_MLC_Leaf1_Left/genericRepeaterMove/setPlacementsFilename data/precise_MultiLeafsCollimator_Leaf1Left.placements
+/gate/mylinac_MLC_Leaf1_Left/genericRepeaterMove/setPlacementsFilename data/precise_MultiLeafsCollimator_Leaf1Left.brent.placements
 /gate/mylinac_MLC_Leaf1_Left/genericRepeaterMove/useRelativeTranslation 1
 
 # -----------------------------------------------------
@@ -199,6 +199,6 @@
 # -----------------------------------------------------
 # Repeater and motion
 /gate/mylinac_MLC_Leaf2_Right/moves/insert genericRepeaterMove
-/gate/mylinac_MLC_Leaf2_Right/genericRepeaterMove/setPlacementsFilename data/precise_MultiLeafsCollimator_Leaf2Right.placements
+/gate/mylinac_MLC_Leaf2_Right/genericRepeaterMove/setPlacementsFilename data/precise_MultiLeafsCollimator_Leaf2Right.brent.placements
 /gate/mylinac_MLC_Leaf2_Right/genericRepeaterMove/useRelativeTranslation 1
 

@@ -1,0 +1,50 @@
+# ---------------------------------------
+# Patient
+# ---------------------------------------
+
+/gate/world/daughters/name patient
+/gate/world/daughters/insert box
+/gate/patient/setMaterial G4_POLYSTYRENE
+/gate/patient/placement/setTranslation 0 0 0 mm
+/gate/patient/geometry/setXLength 300 mm
+/gate/patient/geometry/setYLength 300 mm
+/gate/patient/geometry/setZLength 100 mm
+/gate/patient/vis/setColor blue
+
+### rotate the patient
+#/gate/patient/placement/setRotationAxis 1 0 0
+#/gate/patient/placement/setRotationAngle -90 deg
+
+
+#/gate/world/daughters/name testmeter
+#/gate/world/daughters/insert box
+#/gate/testmeter/setMaterial G4_POLYSTYRENE
+#/gate/testmeter/placement/setTranslation 0 0 0 mm
+#/gate/testmeter/geometry/setXLength 100 mm
+#/gate/testmeter/geometry/setYLength 100 mm
+#/gate/testmeter/geometry/setZLength 1 m
+#/gate/testmeter/vis/setColor blue
+#/gate/testmeter/placement/setTranslation 0 0 500 mm
+#/gate/testmeter/vis/setColor white
+
+#/gate/world/daughters/name testdikte
+#/gate/world/daughters/insert box
+#/gate/testdikte/setMaterial G4_POLYSTYRENE
+#/gate/testdikte/placement/setTranslation 0 0 0 mm
+#/gate/testdikte/geometry/setXLength 100 mm
+#/gate/testdikte/geometry/setYLength 100 mm
+#/gate/testdikte/geometry/setZLength 21 cm
+#/gate/testdikte/vis/setColor blue
+#/gate/testdikte/placement/setTranslation 10 10 895 mm
+#/gate/testdikte/vis/setColor red
+
+#/gate/world/daughters/name testepiddist
+#/gate/world/daughters/insert box
+#/gate/testepiddist/setMaterial G4_POLYSTYRENE
+#/gate/testepiddist/placement/setTranslation 0 0 0 mm
+#/gate/testepiddist/geometry/setXLength 100 mm
+#/gate/testepiddist/geometry/setYLength 100 mm
+#/gate/testepiddist/geometry/setZLength 0.6 m
+#/gate/testepiddist/vis/setColor blue
+#/gate/testepiddist/placement/setTranslation 0 0 -0.3 m
+#/gate/testepiddist/vis/setColor red

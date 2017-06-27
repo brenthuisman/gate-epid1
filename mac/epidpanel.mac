@@ -1,0 +1,125 @@
+#/gate/actor/subtractActor scatterVolumeInformationActor svia
+#/gate/actor/svia/attachTo      patient
+
+#/control/alias RESOLUTION 1024
+#/control/alias RESOLUTION 256
+
+# Layers and thicknesses taken from Blake 2013 (fig1) and communications with Sam Blake.
+# 
+# Front Casing : 0.75 mm, Aluminium
+# Copper buildup : 1 mm, Copper
+# Overcoat : 58.4 um = 0.0584 mm, cellulose acetate
+# Support : 177.8 um = 0.1778 mm (polyethylene terephthalate + 7.5% titanium dioxide by weight), PET_TiO
+# Phosphorscreen : 235.8 um = 0.2358 mm, GOS:Te (I leave the Te off because we score Edep directly and thus dont need improved photoconversion), GOS
+# Overcoat (between phosphor and photodiode): 8.4 um = 0.0084 mm, cellulose acetate
+
+/control/alias EPIDPOS -600 #mm
+
+/control/alias frontcasing_thickness 0.75
+/gate/world/daughters/name frontcasing
+/gate/world/daughters/insert box
+/gate/frontcasing/setMaterial Aluminium
+/gate/frontcasing/geometry/setXLength 410 mm
+/gate/frontcasing/geometry/setYLength 410 mm
+/gate/frontcasing/geometry/setZLength {frontcasing_thickness} mm
+/control/divide frontcasing_halfthick {frontcasing_thickness} 2
+/control/subtract frontcasing_mid {EPIDPOS} {frontcasing_halfthick} # because placement is at midpoint
+/gate/frontcasing/placement/setTranslation 0 0 {frontcasing_mid} mm
+/control/subtract frontcasing_after {EPIDPOS} {frontcasing_thickness} # next element is placed right behind this_volume_after
+
+/control/alias airgap_beforecopper_thickness 0.1
+/gate/world/daughters/name airgap_beforecopper
+/gate/world/daughters/insert box
+/gate/airgap_beforecopper/setMaterial Air
+/gate/airgap_beforecopper/geometry/setXLength 410 mm
+/gate/airgap_beforecopper/geometry/setYLength 410 mm
+/gate/airgap_beforecopper/geometry/setZLength {airgap_beforecopper_thickness} mm
+/control/divide airgap_beforecopper_halfthick {airgap_beforecopper_thickness} 2
+/control/subtract airgap_beforecopper_mid {frontcasing_after} {airgap_beforecopper_halfthick} # because placement is at midpoint
+/gate/airgap_beforecopper/placement/setTranslation 0 0 {airgap_beforecopper_mid} mm
+/control/subtract airgap_beforecopper_after {frontcasing_after} {airgap_beforecopper_thickness} # next element is placed right behind this_volume_after
+
+/control/alias copperplate_thickness 1
+/gate/world/daughters/name copperplate
+/gate/world/daughters/insert box
+/gate/copperplate/setMaterial Air
+/gate/copperplate/geometry/setXLength 410 mm
+/gate/copperplate/geometry/setYLength 410 mm
+/gate/copperplate/geometry/setZLength {copperplate_thickness} mm
+/control/divide copperplate_halfthick {copperplate_thickness} 2
+/control/subtract copperplate_mid {airgap_beforecopper_after} {copperplate_halfthick} # because placement is at midpoint
+/gate/copperplate/placement/setTranslation 0 0 {copperplate_mid} mm
+/control/subtract copperplate_after {airgap_beforecopper_after} {copperplate_thickness} # next element is placed right behind this_volume_after
+
+/control/alias airgap_aftercopper_thickness 0.1
+/gate/world/daughters/name airgap_aftercopper
+/gate/world/daughters/insert box
+/gate/airgap_aftercopper/setMaterial Air
+/gate/airgap_aftercopper/geometry/setXLength 410 mm
+/gate/airgap_aftercopper/geometry/setYLength 410 mm
+/gate/airgap_aftercopper/geometry/setZLength {airgap_aftercopper_thickness} mm
+/control/divide airgap_aftercopper_halfthick {airgap_aftercopper_thickness} 2
+/control/subtract airgap_aftercopper_mid {copperplate_after} {airgap_aftercopper_halfthick} # because placement is at midpoint
+/gate/airgap_aftercopper/placement/setTranslation 0 0 {airgap_aftercopper_mid} mm
+/control/subtract airgap_aftercopper_after {copperplate_after} {airgap_aftercopper_thickness} # next element is placed right behind this_volume_after
+
+/control/alias overcoat_top_thickness 0.0584
+/gate/world/daughters/name overcoat_top
+/gate/world/daughters/insert box
+/gate/overcoat_top/setMaterial cellulose_acetate
+/gate/overcoat_top/geometry/setXLength 410 mm
+/gate/overcoat_top/geometry/setYLength 410 mm
+/gate/overcoat_top/geometry/setZLength {overcoat_top_thickness} mm
+/control/divide overcoat_top_halfthick {overcoat_top_thickness} 2
+/control/subtract overcoat_top_mid {airgap_aftercopper_after} {overcoat_top_halfthick} # because placement is at midpoint
+/gate/overcoat_top/placement/setTranslation 0 0 {overcoat_top_mid} mm
+/control/subtract overcoat_top_after {airgap_aftercopper_after} {overcoat_top_thickness} # next element is placed right behind this_volume_after
+
+/control/alias support_thickness 0.1778
+/gate/world/daughters/name support
+/gate/world/daughters/insert box
+/gate/support/setMaterial PET_TiO
+/gate/support/geometry/setXLength 410 mm
+/gate/support/geometry/setYLength 410 mm
+/gate/support/geometry/setZLength {support_thickness} mm
+/control/divide support_halfthick {support_thickness} 2
+/control/subtract support_mid {overcoat_top_after} {support_halfthick} # because placement is at midpoint
+/gate/support/placement/setTranslation 0 0 {support_mid} mm
+/control/subtract support_after {overcoat_top_after} {support_thickness} # next element is placed right behind this_volume_after
+
+/control/alias phosphorscreen_thickness 0.2358
+/gate/world/daughters/name phosphorscreen
+/gate/world/daughters/insert box
+/gate/phosphorscreen/setMaterial PET_TiO
+/gate/phosphorscreen/geometry/setXLength 410 mm
+/gate/phosphorscreen/geometry/setYLength 410 mm
+/gate/phosphorscreen/geometry/setZLength {phosphorscreen_thickness} mm
+/control/divide phosphorscreen_halfthick {phosphorscreen_thickness} 2
+/control/subtract phosphorscreen_mid {support_after} {phosphorscreen_halfthick} # because placement is at midpoint
+/gate/phosphorscreen/placement/setTranslation 0 0 {phosphorscreen_mid} mm
+/control/subtract phosphorscreen_after {support_after} {phosphorscreen_thickness} # next element is placed right behind this_volume_after
+
+/control/alias overcoat_under_thickness 0.0084
+/gate/world/daughters/name overcoat_under
+/gate/world/daughters/insert box
+/gate/overcoat_under/setMaterial cellulose_acetate
+/gate/overcoat_under/geometry/setXLength 410 mm
+/gate/overcoat_under/geometry/setYLength 410 mm
+/gate/overcoat_under/geometry/setZLength {overcoat_under_thickness} mm
+/control/divide overcoat_under_halfthick {overcoat_under_thickness} 2
+/control/subtract overcoat_under_mid {phosphorscreen_after} {overcoat_under_halfthick} # because placement is at midpoint
+/gate/overcoat_under/placement/setTranslation 0 0 {overcoat_under_mid} mm
+/control/subtract overcoat_under_after {phosphorscreen_after} {overcoat_under_thickness} # next element is placed right behind this_volume_after
+
+
+
+### vis
+/gate/frontcasing/vis/setColor white
+/gate/airgap_beforecopper/vis/setColor red
+/gate/copperplate/vis/setColor gray
+/gate/airgap_aftercopper/vis/setColor green
+/gate/overcoat_top/vis/setColor cyan
+/gate/support/vis/setColor magenta
+/gate/phosphorscreen/vis/setColor blue
+/gate/overcoat_under/vis/setColor yellow
+
