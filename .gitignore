@@ -3,8 +3,8 @@
 # Now, whitelist dirs
 !data/
 !mac/
-!data/*
-!mac/*
+!data/**
+!mac/**
 # files
 !.gitignore
 
