@@ -1,7 +1,7 @@
 ############# kill after support
 /gate/actor/addActor KillActor       ahnuld
 /gate/actor/ahnuld/save             ahnuld.txt
-/gate/actor/ahnuld/attachTo         support
+/gate/actor/ahnuld/attachTo         killvolume
 /gate/actor/ahnuld/addFilter                         transmissionFilter
 /gate/actor/ahnuld/transmissionFilter/setTransmission true
 ############# END OF TEST
@@ -18,13 +18,24 @@
 
 ## EPID (TLE) DOSE, all DOSE
 
-/gate/actor/addActor DoseActor      epiddoseall
-/gate/actor/epiddoseall/save              output/epiddose-all.mhd
-/gate/actor/epiddoseall/attachTo          phosphorscreen
-#/gate/actor/epiddoseall/stepHitType       middle
-/gate/actor/epiddoseall/setResolution     {RESOLUTION} {RESOLUTION} 1
-/gate/actor/epiddoseall/enableDose            true
-/gate/actor/epiddoseall/enableUncertaintyDose true
-/gate/actor/epiddoseall/enableEdep            true
-/gate/actor/epiddoseall/enableUncertaintyEdep true
-/gate/actor/epiddoseall/enableNumberOfHits true
+/gate/actor/addActor DoseActor      epiddose
+/gate/actor/epiddose/save              output/epiddose-trans.mhd
+/gate/actor/epiddose/attachTo          phosphorscreen
+#/gate/actor/epiddose/stepHitType       middle
+/gate/actor/epiddose/setResolution     {RESOLUTION} {RESOLUTION} 1
+/gate/actor/epiddose/enableDose            true
+/gate/actor/epiddose/enableUncertaintyDose true
+/gate/actor/epiddose/enableEdep            true
+/gate/actor/epiddose/enableUncertaintyEdep true
+/gate/actor/epiddose/enableNumberOfHits true
+
+/gate/actor/addActor TLEDoseActor      epiddosetle
+/gate/actor/epiddosetle/save              output/epiddose-trans-tle.mhd
+/gate/actor/epiddosetle/attachTo          phosphorscreen
+#/gate/actor/epiddosetle/stepHitType       middle
+/gate/actor/epiddosetle/setResolution     {RESOLUTION} {RESOLUTION} 1
+/gate/actor/epiddosetle/enableDose            true
+/gate/actor/epiddosetle/enableUncertaintyDose true
+/gate/actor/epiddosetle/enableEdep            true
+/gate/actor/epiddosetle/enableUncertaintyEdep true
+#/gate/actor/epiddosetle/enableNumberOfHits true

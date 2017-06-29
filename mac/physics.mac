@@ -13,9 +13,30 @@
 /gate/physics/Electron/SetCutInRegion   mylinac 10 mm
 /gate/physics/Positron/SetCutInRegion   mylinac 10 mm
 
-/gate/physics/Gamma/SetCutInRegion      phosphorscreen 0.1 mm
-/gate/physics/Electron/SetCutInRegion   phosphorscreen 0.1 mm
-/gate/physics/Positron/SetCutInRegion   phosphorscreen 0.1 mm
+# EPID dose scoring
+/gate/physics/Gamma/SetCutInRegion      phosphorscreen 0.01 mm
+/gate/physics/Electron/SetCutInRegion   phosphorscreen 0.01 mm
+/gate/physics/Positron/SetCutInRegion   phosphorscreen 0.01 mm
+
+# EPID other components scoring
+
+/gate/physics/Gamma/SetCutInRegion      frontcasing 0.01 mm
+/gate/physics/Electron/SetCutInRegion   frontcasing 0.01 mm
+/gate/physics/Positron/SetCutInRegion   frontcasing 0.01 mm
+/gate/physics/Gamma/SetCutInRegion      copperplate 0.01 mm
+/gate/physics/Electron/SetCutInRegion   copperplate 0.01 mm
+/gate/physics/Positron/SetCutInRegion   copperplate 0.01 mm
+/gate/physics/Gamma/SetCutInRegion      overcoat_top 0.01 mm
+/gate/physics/Electron/SetCutInRegion   overcoat_top 0.01 mm
+/gate/physics/Positron/SetCutInRegion   overcoat_top 0.01 mm
+/gate/physics/Gamma/SetCutInRegion      support 0.01 mm
+/gate/physics/Electron/SetCutInRegion   support 0.01 mm
+/gate/physics/Positron/SetCutInRegion   support 0.01 mm
+/gate/physics/Gamma/SetCutInRegion      overcoat_under 0.01 mm
+/gate/physics/Electron/SetCutInRegion   overcoat_under 0.01 mm
+/gate/physics/Positron/SetCutInRegion   overcoat_under 0.01 mm
+
+# Logging
 
 /gate/physics/displayCuts
 /gate/physics/print output/physics.txt
